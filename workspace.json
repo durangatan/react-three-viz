@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "cli": { "defaultCollection": "@nrwl/react" },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": { "style": "styled-components" },
+      "library": { "style": "styled-components", "linter": "eslint" }
+    }
+  },
+  "projects": {
+    "viz-components": {
+      "root": "libs/viz-components",
+      "sourceRoot": "libs/viz-components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/viz-components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/viz-components"],
+          "options": {
+            "jestConfig": "libs/viz-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "viz-hooks": {
+      "root": "libs/viz-hooks",
+      "sourceRoot": "libs/viz-hooks/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/viz-hooks/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/viz-hooks"],
+          "options": {
+            "jestConfig": "libs/viz-hooks/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "viz-spa": {
+      "root": "apps/viz-spa",
+      "sourceRoot": "apps/viz-spa/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "deployUrl": "www.react-three-viz.com",
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputHashing": "all",
+            "outputPath": "dist/apps/viz-spa",
+            "index": "apps/viz-spa/src/index.html",
+            "main": "apps/viz-spa/src/main.tsx",
+            "polyfills": "apps/viz-spa/src/polyfills.ts",
+            "tsConfig": "apps/viz-spa/tsconfig.app.json",
+            "assets": [
+              "apps/viz-spa/src/favicon.ico",
+              "apps/viz-spa/src/meta.png",
+              "apps/viz-spa/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/viz-spa/src/environments/environment.ts",
+                  "with": "apps/viz-spa/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": { "buildTarget": "viz-spa:build" },
+          "configurations": {
+            "production": { "buildTarget": "viz-spa:build:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/viz-spa/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/viz-spa"],
+          "options": {
+            "jestConfig": "apps/viz-spa/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
+}

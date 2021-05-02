@@ -1,0 +1,23 @@
+{
+  "implicitDependencies": {
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    ".eslintrc.json": "*"
+  },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "visualizer",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "canTrackAnalytics": true,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "viz-components": { "tags": [] },
+    "viz-hooks": { "tags": [] },
+    "viz-spa": { "tags": [] }
+  }
+}
