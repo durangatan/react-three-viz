@@ -1,6 +1,6 @@
 # React-Three-Viz.com
 
-This repository contains the source code and infrastructure for [react-three-viz.com](react-three-viz.com).
+This repository contains the source code and infrastructure for [react-three-viz.com](www.react-three-viz.com).
 
 ## Tools
 
