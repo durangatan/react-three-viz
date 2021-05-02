@@ -9,6 +9,7 @@ Here's a list of the tools this project uses. I didn't have a hand in making any
 - React-Three-Viz is an [NX](https://nx.dev) monorepo.
 - The visualization is powered by [react-three-fiber](https://github.com/pmndrs/react-three-fiber), a React renderer for Three.js.
 - The audio playback and analysis is powered by the built-in Web Audio API!
+- This app is deployed to S3 / Cloudfront (infrastructure managed by Terraform)
 
 ## Acknowledgements
 
